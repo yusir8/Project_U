@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project U</title>
+    <style>
+      /*Custom font*/
+      @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+      /*Universal*/
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        cursor: none;
+      }
+
+      body {
+        font-family: "rubik";
+        font-weight: 400;
+        min-height: 100vh;
+      }
+
+      #customCursor {
+        position: fixed;
+        width: 5em;
+        height: 5em;
+        background: url(/Project/WII_U_UI_Project/image/WII_U_CURSOR.png)
+          no-repeat center;
+        background-size: contain;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+      }
+
+      .video-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      .video-bg video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .blank,
+      .spc {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        all: unset;
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+
+      .spc::after,
+      .top::after {
+        content: attr(data-name);
+        position: absolute;
+        top: -4.1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.85);
+        color: black;
+        padding: 1rem 1rem;
+        border-radius: 15px;
+        font-size: 1.4rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 150ms ease;
+        white-space: nowrap;
+        z-index: 999;
+      }
+
+      .bottom::after {
+        content: attr(data-name);
+        position: absolute;
+        bottom: -3.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.85);
+        color: black;
+        padding: 1rem 1rem;
+        border-radius: 15px;
+        font-size: 1.4rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 150ms ease;
+        white-space: nowrap;
+        z-index: 999;
+      }
+
+      .top:hover::after,
+      .bottom:hover::after,
+      .spc:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+        font-weight: 350;
+        letter-spacing: 0.04em;
+      }
+
+      .top:not([data-name])::after,
+      .bottom:not([data-name])::after,
+      .spc:not([data-name])::after {
+        display: none;
+      }
+
+      .blank img {
+        width: 10rem;
+        height: 10em;
+        transition: all 150ms;
+      }
+
+      .blank .slot {
+        z-index: 1;
+      }
+
+      .blank .disc {
+        position: absolute;
+        width: 70%;
+        height: auto;
+        top: 15%;
+        z-index: 2;
+        pointer-events: none;
+        border-radius: 0.5rem;
+      }
+
+      .blank img:hover,
+      .disc-slot:hover .disc,
+      .spc img:hover {
+        transform: scale(1.1);
+      }
+
+      .blank img:active,
+      .disc-slot:active .disc,
+      #start img:active {
+        transform: scale(1.2);
+      }
+
+      .spc img {
+        width: 4.5em;
+        height: 4.5em;
+        transition: all 150ms;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        grid-template-rows: repeat(3, auto);
+        justify-content: center;
+        column-gap: 1.5em;
+        margin-bottom: 10px;
+      }
+
+      .icons {
+        display: flex;
+        justify-content: center;
+      }
+
+      .icons button {
+        margin: 0 2.8em;
+      }
+
+      #clock {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10vh;
+      }
+
+      footer {
+        display: flex;
+        flex-direction: column;
+        height: 9vh;
+        justify-content: flex-end;
+      }
+
+      footer p {
+        margin: 0;
+        padding: 20px;
+        width: 100%;
+        opacity: 0.4;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- The UI Element of Wii U 
+         (Custom cursor, background music and more) -->
+
+    <!-- Cursor -->
+    <div id="customCursor"></div>
+
+    <!-- BG video -->
+    <div class="video-bg">
+      <video autoplay muted loop playsinline>
+        <source
+          src="/Project/WII_U_UI_Project/music/Wii U Menu - TV Background Loop.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+
+    <!-- BG music -->
+    <audio
+      id="menuMusic"
+      src="/Project/WII_U_UI_Project/music/menu_active.mp3"
+      loop
+    ></audio>
+    <audio
+      id="idleMusic"
+      src="/Project/WII_U_UI_Project/music/menu_idle.mp3"
+      loop
+    ></audio>
+
+    <!-- hover & click SFX -->
+    <audio id="hover-sound" preload="auto">
+      <source
+        src="/Project/WII_U_UI_Project/music/00240 - WAV_240_GUESS_BANK_MEN.wav"
+        type="audio/wav"
+      />
+    </audio>
+    <audio id="click-sound" preload="auto">
+      <source
+        src="/Project/WII_U_UI_Project/music/00245 - WAV_245_GUESS_WARC_1_GUESS_GROUP_MEN.wav"
+        type="audio/wav"
+      />
+    </audio>
+
+    <!-- Main Content  -->
+    <div id="clock">
+      <h3><span id="time">00:00</span></h3>
+    </div>
+    <!-- <div>
+      <img src="/Project/WII_U_UI_Project/image/Default_mii.png">
+    </div> -->
+    <div class="grid">
+      <button class="blank disc-slot bottom" data-name="Disc">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" class="slot" />
+        <img
+          src="/Project/WII_U_UI_Project/image/Disc_channel.png"
+          class="disc"
+        />
+      </button>
+      <button class="blank disc-slot bottom" data-name="Mii Maker">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" class="slot" />
+        <img src="/Project/WII_U_UI_Project/image/Mii_Maker.png" class="disc" />
+      </button>
+      <button class="blank disc-slot bottom">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+      <button class="blank disc-slot bottom">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+      <button class="blank disc-slot bottom">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+
+      <button class="blank disc-slot top" id="start" data-name="?">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" class="slot" />
+        <img
+          src="/Project/WII_U_UI_Project/image/Question_mark.png"
+          class="disc"
+        />
+      </button>
+      <button class="blank disc-slot top">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+      <button class="blank disc-slot top">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+      <button class="blank disc-slot top">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+      <button class="blank disc-slot top">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+
+      <button class="blank disc-slot top">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+      <button class="blank disc-slot top">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+      <button class="blank disc-slot top">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+      <button class="blank disc-slot top">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+      <button class="blank disc-slot top">
+        <img src="/Project/WII_U_UI_Project/image/empty.png" />
+      </button>
+    </div>
+
+    <div class="icons">
+      <button class="spc" data-name="Friend List">
+        <img src="/Project/WII_U_UI_Project/image/friend_list.png" />
+      </button>
+      <button class="spc" data-name="Miiverse">
+        <img src="/Project/WII_U_UI_Project/image/miiverse.png" />
+      </button>
+      <button class="spc" data-name="eShop">
+        <img src="/Project/WII_U_UI_Project/image/eshop.png" />
+      </button>
+      <button class="spc" data-name="Internet Browser">
+        <img src="/Project/WII_U_UI_Project/image/internet.png" />
+      </button>
+      <button class="spc" data-name="Notification">
+        <img src="/Project/WII_U_UI_Project/image/message.png" />
+      </button>
+      <button class="spc" data-name="Download Management">
+        <img src="/Project/WII_U_UI_Project/image/Download_station.png" />
+      </button>
+    </div>
+
+    <footer>
+      <p>This site isn't affiliated with Nintendo</p>
+    </footer>
+    <script>
+      let menuMusic = document.getElementById("menuMusic");
+      let idleMusic = document.getElementById("idleMusic");
+      const start = document.getElementById("start");
+      const cursor = document.getElementById("customCursor");
+
+      // BG music idle & active
+      menuMusic.volume = 0.9;
+      idleMusic.volume = 0.9;
+
+      start.addEventListener("click", () => {
+        menuMusic.play();
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState == "hidden") {
+          idleMusic.currentTime = menuMusic.currentTime;
+          idleMusic.play();
+          menuMusic.pause();
+        } else {
+          menuMusic.currentTime = idleMusic.currentTime;
+          menuMusic.play();
+          idleMusic.pause();
+        }
+      });
+
+      // Custom cursors
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.pageX + "px";
+        cursor.style.top = e.pageY + "px";
+      });
+
+      //hover sound
+      const soundtrigger = document.querySelectorAll("img");
+      const hoverSFX = document.getElementById("hover-sound");
+      const clickSFX = document.getElementById("click-sound");
+      soundtrigger.forEach((el) => {
+        el.addEventListener("mouseover", (e) => {
+          if (e.target !== el) return; // ignore if hovering a child element
+          hoverSFX.currentTime = 0;
+          hoverSFX.play();
+        });
+
+        el.addEventListener("click", () => {
+          clickSFX.currentTime = 0;
+          clickSFX.play();
+
+          // if (!el.dataset.name) {
+          //   el.style.transform = "scale(1.05)";
+          //   setTimeout(() => (el.style.transform = ""), 100);
+          //   return;
+          // }
+        });
+
+        el.addEventListener("mouseleave", () => {
+          hoverSFX.pause();
+          hoverSFX.currentTime = 0;
+        });
+      });
+
+      // clock
+      const time = document.getElementById("time");
+
+      function updatedDate() {
+        let Newdate = new Date();
+
+        let Hours = Newdate.getHours();
+        let Minute = Newdate.getMinutes();
+
+        Hours = Hours < 10 ? "0" + Hours : Hours;
+        Minute = Minute < 10 ? "0" + Minute : Minute;
+
+        time.textContent = `${Hours}:${Minute}`;
+      }
+
+      updatedDate();
+      setInterval(updatedDate, 1000);
+    </script>
+  </body>
+</html>
