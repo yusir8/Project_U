@@ -18,11 +18,17 @@ This Project isn't completed yet! There are some feature missing!
 - Hover and click sound effects
 - Interactivity UI
 
----
-
 ### Upcoming Features
 - Settings page
 - A scrollbar
 - Updated UI/UX
 
 ---
+# Miscellaneous
+
+## Issues
+- BG music won't play until user input
+- BG video delay
+
+## Credits 
+- Sprite
