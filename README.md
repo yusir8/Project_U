@@ -1,6 +1,6 @@
 # Project U
 
-![Official Logo](./image/Project_U_favicon/Project_U_logo)
+![Official Logo](./image/Project_U_favicon/Project_U_logo.png)
 
 ## About
 Project U is a **Wii U main menu recreation** created by me. 
