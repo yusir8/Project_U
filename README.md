@@ -9,7 +9,7 @@
 Project U is a **Wii U main menu recreation** created by me. 
 
 ### **NOTICE**
-This Project isn't completed yet! Still in development.
+This Project isn't completed yet! Still in development.<br>
 This project **WILL NOT** work on Mobile. **ONLY WORKS ON** 🖥️ Desktop
 
 ---
