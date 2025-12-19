@@ -1,15 +1,56 @@
 let menuMusic = document.getElementById("menuMusic");
 let idleMusic = document.getElementById("idleMusic");
-const start = document.getElementById("start");
 const cursor = document.getElementById("customCursor");
+
+// popup warning sign
+const div = document.createElement("div");
+div.classList.add("warning");
+div.id = "exist";
+
+const imgBG = document.createElement("img");
+imgBG.src =
+  "image/Gemini_Generated_Image_jlp9oljlp9oljlp9-removebg-preview.png";
+imgBG.classList.add("warning-bg");
+
+const h1 = document.createElement("h1");
+h1.innerText = "Warning!";
+
+const h4AFF = document.createElement("h4");
+h4AFF.classList.add("aff");
+h4AFF.innerText = "This site isn't affiliated with Nintendo!";
+
+const h4 = document.createElement("h4");
+h4.innerHTML = `This site is indev.<br>There are missing features, bugs and mistakes.`;
+
+let btn = document.createElement("button");
+btn.classList.add("OK-btn");
+btn.innerText = "OK";
+btn.id = "start";
+
+btn.addEventListener("click", () => {
+  div.classList.remove("show");
+
+  menuMusic.play();
+
+  setTimeout(() => {
+    div.remove();
+  }, 50);
+});
+
+div.appendChild(h1);
+div.appendChild(h4AFF);
+div.appendChild(h4);
+div.appendChild(btn);
+div.appendChild(imgBG);
+document.body.appendChild(div);
+
+setTimeout(() => {
+  div.classList.add("show");
+}, 50);
 
 // BG music idle & active
 menuMusic.volume = 0.9;
 idleMusic.volume = 0.9;
-
-start.addEventListener("click", () => {
-  menuMusic.play();
-});
 
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState == "hidden") {
@@ -30,7 +71,7 @@ document.addEventListener("mousemove", (e) => {
 });
 
 //hover sound
-const soundtrigger = document.querySelectorAll(".blank, .spc");
+const soundtrigger = document.querySelectorAll(".blank, .spc, .OK-btn");
 const hoverSFX = document.getElementById("hover-sound");
 const clickSFX = document.getElementById("click-sound");
 
@@ -67,5 +108,3 @@ function updatedDate() {
 
 updatedDate();
 setInterval(updatedDate, 1000);
-
-// popup warning sign
