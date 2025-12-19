@@ -29,7 +29,21 @@ This project **WILL NOT** work on Mobile. **ONLY WORKS ON** 🖥️ Desktop
 
 ## Issues
 - BG music won't play until user input
-- BG video delay
+- BG video doesn't play
 
 ## Credits 
-- Sprite
+- Sprites - resekf, RFGuy, epicmartin7, DogToon64
+- BG Music - Nintendo
+- BG Video - Nintendo
+
+## Support Me
+
+Project U is a passion project and still in development.
+If you’d like to help improve it, feedback and suggestions are always welcome.
+
+Special thanks to everyone who checks out the project 💙
+
+## My Social Media
+[My Youtube Channel](https://www.youtube.com/@itsmeyusir8)
+My Discord - yusir8
+My Email - yasirprosnoob@gmail.com
