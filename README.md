@@ -1,6 +1,9 @@
 # Project U
 
-![Official Logo](./image/Project_U_favicon/apple-touch-icon.png) **inspired by amiibo logo**
+![Official Logo](./image/Project_U_favicon/apple-touch-icon.png) 
+
+**inspired by amiibo logo**
+
 
 ## About
 Project U is a **Wii U main menu recreation** created by me. 
