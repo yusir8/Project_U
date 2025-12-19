@@ -112,7 +112,7 @@ body {
   color: black;
   padding: 1rem 1rem;
   border-radius: 15px;
-  font-size: 1.41rem;
+  font-size: 1.4rem;
   opacity: 0;
   pointer-events: none;
   transition: all 150ms ease;
