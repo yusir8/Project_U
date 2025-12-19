@@ -44,6 +44,6 @@ If you’d like to help improve it, feedback and suggestions are always welcome.
 Special thanks to everyone who checks out the project 💙
 
 ## My Social Media
-[My Youtube Channel](https://www.youtube.com/@itsmeyusir8)
-My Discord - yusir8
+[My Youtube Channel](https://www.youtube.com/@itsmeyusir8)  
+My Discord - yusir8  
 My Email - yasirprosnoob@gmail.com
