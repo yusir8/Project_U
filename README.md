@@ -11,7 +11,7 @@ Project U is a **Wii U main menu recreation** created by me.
 ### **NOTICE**
 
 This Project isn't completed yet! Still in development. There are a few (or many!) bugs or mistake!  
-This project **DOES NOT** work on Mobile. **ONLY WORKS ON** 🖥️ Desktop
+This project **LOOK TERRIBLE** on Mobile. **IT IS BEST TO USE ON** 🖥️ Desktop
 
 ---
 
@@ -25,9 +25,9 @@ This project **DOES NOT** work on Mobile. **ONLY WORKS ON** 🖥️ Desktop
 ### Future Features
 
 - Settings page
-- Scrollbar functionality
-- Updated UI/UX
+- Refresh UI/UX
 - Navigation arrow (left and right)
+- Working Wii menu (may take a while)
 
 ---
 

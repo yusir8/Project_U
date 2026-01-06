@@ -2,53 +2,87 @@ let menuMusic = document.getElementById("menuMusic");
 let idleMusic = document.getElementById("idleMusic");
 const cursor = document.getElementById("customCursor");
 
-// popup warning sign
-const modal = document.createElement("div");
-modal.classList.add("modal");
+// Modal engine
+const modal = document.getElementById("modal");
+const modalHeader = document.getElementById("modalHeader");
+const modalBody = document.getElementById("modalBody");
 
-const modalContent = document.createElement("div");
-modalContent.classList.add("modal-content");
+function openModal({ title = "", body = "", closable = true }) {
+  modalHeader.innerHTML = `
+    <span class="title">${title}</span>
+    ${closable ? `<button class="close" id="closesound"></button>` : ""}
+  `;
 
-const modalBody = document.createElement("div");
-modalBody.classList.add("modal-body");
+  modalBody.innerHTML = body;
+  modal.classList.add("show");
 
-const h2 = document.createElement("h2");
-h2.innerHTML = `Warning!`;
+  if (closable) {
+    const closeBtn = document.getElementById("closesound");
+    const cancelSFX = document.getElementById("cancel-sound");
 
-const span = document.createElement("span");
-span.innerHTML = `Project U is still under development.<br />You may encounter bugs, missing features, visual issues or mistakes`;
+    closeBtn.addEventListener("click", () => {
+      cancelSFX.currentTime = 0;
+      cancelSFX.play();
+      closeModal();
+    });
+  }
+}
 
-const btnD = document.createElement("div");
-btnD.classList.add("btn-d");
-
-let btn = document.createElement("button");
-btn.classList.add("btn");
-btn.innerText = "OK";
-btn.id = "start";
-
-const small = document.createElement("small");
-small.innerHTML = `If you'd like to help improve it, feedback and suggestions are always welcome.`;
-
-document.body.appendChild(modal);
-modal.appendChild(modalContent);
-modalContent.appendChild(modalBody);
-modalBody.appendChild(h2);
-modalBody.appendChild(span);
-modalBody.appendChild(btnD);
-btnD.appendChild(btn);
-modalBody.appendChild(small);
-
-btn.addEventListener("click", () => {
-  btn.disabled = true;
+function closeModal() {
   modal.classList.remove("show");
-  menuMusic.play();
+}
 
-  setTimeout(() => modal.remove(), 251);
+// Setting
+let setting = document.getElementById("setting");
+
+setting.addEventListener("click", () => {
+  openModal({
+    title: "Settings",
+    closable: true,
+    body: `
+    <span>Sorry! Setting isn't implemented yet!</span>
+    `,
+  });
 });
 
-setTimeout(() => {
-  modal.classList.add("show");
-}, 500);
+// popup warning sign
+const NOTICE_VERSION = "2"; // bump this whenever you change notice
+
+const userNoticeVersion = localStorage.getItem("noticeVersion");
+
+if (userNoticeVersion !== NOTICE_VERSION) {
+  openModal({
+    title: "Notice",
+    closable: false,
+    body: ` <span>
+    Welcome to Project U!
+    <br>
+    <br>
+    Project U still under development
+    <br>
+    You may encounter bugs, missing features, visual issues or mistakes.
+    <br>
+    Other than that enjoy!
+    
+    </span>
+        <small>
+      Give feedback and suggestions! <br> It will help make future versions easier to use.
+    </small>
+    <div class="btn-d">
+      <button class="btn" id="start">OK</button>
+    </div>`,
+  });
+
+  setTimeout(() => {
+    document.getElementById("start").onclick = () => {
+      localStorage.setItem("noticeVersion", NOTICE_VERSION);
+      closeModal();
+      menuMusic.play();
+    };
+  }, 0);
+} else {
+  menuMusic.play();
+}
 
 // BG music idle & active
 menuMusic.volume = 0.9;

@@ -13,13 +13,20 @@
     <!-- The UI Element of Wii U 
          (Custom cursor, background music and more) -->
 
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header" id="modalHeader"></div>
+        <div class="modal-body" id="modalBody"></div>
+      </div>
+    </div>
+
     <!-- Cursor -->
     <div id="customCursor"></div>
 
     <!-- BG video -->
     <div class="video-bg">
       <video autoplay muted loop playsinline>
-        <source src="music/WII_U_MENU_BG_VIDEO_MINI.mp4" type="video/mp4" />
+        <source src="music/Wii_U_background_video.mp4" type="video/mp4" />
       </video>
     </div>
 
@@ -29,30 +36,23 @@
 
     <!-- hover & click SFX -->
     <audio id="hover-sound" preload="auto">
-      <source src="music/00240 - WAV_240_GUESS_BANK_MEN.wav" type="audio/wav" />
+      <source src="music/Hover.wav" type="audio/wav" />
     </audio>
     <audio id="click-sound" preload="auto">
-      <source
-        src="music/00245 - WAV_245_GUESS_WARC_1_GUESS_GROUP_MEN.wav"
-        type="audio/wav"
-      />
+      <source src="music/Active.wav" type="audio/wav" />
+    </audio>
+    <audio id="cancel-sound" preload="auto">
+      <source src="music/Cancel.mp3" type="audio/mp3" />
     </audio>
 
+    <!-- Setting -->
     <!-- <div class="modal">
       <div class="modal-content">
+        <div class="modal-header">
+
+        </div>
         <div class="modal-body">
-            <h1>Warning!</h1>
-          <span>
-            Project U is still under development.<br />
-            You may encounter bugs, missing features, visual issues or mistakes
-          </span>
-          <div class="btn-d">
-            <button class="btn" id="start">OK</button>
-          </div>
-          <small
-            >If you like to help improve it, feedback and suggestions are
-            always welcome.</small
-          >
+          <h1>sddfs</h1>
         </div>
       </div>
     </div> -->
@@ -76,7 +76,7 @@
         <img src="image/empty.png" class="slot" />
         <img src="image/Mii_Maker.png" class="disc" />
       </button>
-      <button class="blank disc-slot bottom" data-name="Settings">
+      <button class="blank disc-slot bottom" id="setting" data-name="Settings">
         <img src="image/empty.png" class="slot" />
         <img src="image/System_setting.png" class="disc" />
       </button>
@@ -142,10 +142,12 @@
       <button class="spc" data-name="eShop">
         <img src="image/eshop.png" />
       </button>
-      <button class="spc" data-name="Internet Browser">
-        <a href="https://www.google.com/">
-          <img src="image/internet.png" />
-        </a>
+      <button
+        class="spc"
+        data-name="Internet Browser"
+        onclick="window.open('https://www.google.com/')"
+      >
+        <img src="image/internet.png" />
       </button>
       <button class="spc" data-name="Notification">
         <img src="image/message.png" />
@@ -163,7 +165,7 @@
         </p>
       </div>
       <div class="version">
-        <p><br />Ver. 0.1 / Indev</p>
+        <p><br />Ver. - / Pre-Beta</p>
       </div>
     </footer>
     <script src="wiiu.js"></script>
