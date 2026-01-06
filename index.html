@@ -38,25 +38,24 @@
       />
     </audio>
 
-    <!-- <div class="warning">
-  <img
-    src="image/Gemini_Generated_Image_jlp9oljlp9oljlp9-removebg-preview.png"
-    class="warning-bg"
-  />
-
-  <h1>Warning!</h1>
-  <h4 class="aff">
-    This site isn't affiliated with Nintendo!
-  </h4>
-  <h4>
-    This site is indev.<br>
-    There are missing features, bugs and mistakes.
-  </h4>
-
-  <button class="OK-btn" id="start">
-    <img src="image/OK_button.png" alt="OK">
-  </button>
-</div> -->
+    <!-- <div class="modal">
+      <div class="modal-content">
+        <div class="modal-body">
+            <h1>Warning!</h1>
+          <span>
+            Project U is still under development.<br />
+            You may encounter bugs, missing features, visual issues or mistakes
+          </span>
+          <div class="btn-d">
+            <button class="btn" id="start">OK</button>
+          </div>
+          <small
+            >If you'd like to help improve it, feedback and suggestions are
+            always welcome.</small
+          >
+        </div>
+      </div>
+    </div> -->
 
     <!-- Main Content  -->
     <div id="clock">
@@ -69,10 +68,12 @@
         <img src="image/empty.png" class="slot" />
         <img src="image/Disc_channel.png" class="disc" />
       </button>
-      <button class="blank disc-slot bottom" data-name="Mii Creator">
-        <a href="https://mii.nxw.pw/">
-          <img src="image/empty.png" class="slot" />
-        </a>
+      <button
+        class="blank disc-slot bottom"
+        data-name="Mii Creator"
+        onclick="window.open('https://mii.nxw.pw/')"
+      >
+        <img src="image/empty.png" class="slot" />
         <img src="image/Mii_Maker.png" class="disc" />
       </button>
       <button class="blank disc-slot bottom" data-name="Settings">
@@ -131,10 +132,12 @@
       <button class="spc" data-name="Friend List">
         <img src="image/friend_list.png" />
       </button>
-      <button class="spc" data-name="Miiverse (juxtaposition)">
-        <a href="https://juxt.pretendo.network/titles">
-          <img src="image/miiverse.png" />
-        </a>
+      <button
+        class="spc"
+        data-name="Miiverse (juxtaposition)"
+        onclick="window.open('https://juxt.pretendo.network/titles')"
+      >
+        <img src="image/miiverse.png" />
       </button>
       <button class="spc" data-name="eShop">
         <img src="image/eshop.png" />

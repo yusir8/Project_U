@@ -3,50 +3,52 @@ let idleMusic = document.getElementById("idleMusic");
 const cursor = document.getElementById("customCursor");
 
 // popup warning sign
-const div = document.createElement("div");
-div.classList.add("warning");
-div.id = "exist";
+const modal = document.createElement("div");
+modal.classList.add("modal");
 
-const imgBG = document.createElement("img");
-imgBG.src =
-  "image/Gemini_Generated_Image_jlp9oljlp9oljlp9-removebg-preview.png";
-imgBG.classList.add("warning-bg");
+const modalContent = document.createElement("div");
+modalContent.classList.add("modal-content");
 
-const h1 = document.createElement("h1");
-h1.innerText = "Warning!";
+const modalBody = document.createElement("div");
+modalBody.classList.add("modal-body");
 
-const h4AFF = document.createElement("h4");
-h4AFF.classList.add("aff");
-h4AFF.innerText = "This site isn't affiliated with Nintendo!";
+const h2 = document.createElement("h2");
+h2.innerHTML = `Warning!`;
 
-const h4 = document.createElement("h4");
-h4.innerHTML = `This site is indev.<br>There are missing features, bugs and mistakes.`;
+const span = document.createElement("span");
+span.innerHTML = `Project U is still under development.<br />You may encounter bugs, missing features, visual issues or mistakes`;
+
+const btnD = document.createElement("div");
+btnD.classList.add("btn-d");
 
 let btn = document.createElement("button");
-btn.classList.add("OK-btn");
+btn.classList.add("btn");
 btn.innerText = "OK";
 btn.id = "start";
 
-btn.addEventListener("click", () => {
-  div.classList.remove("show");
+const small = document.createElement("small");
+small.innerHTML = `If you'd like to help improve it, feedback and suggestions are always welcome.`;
 
+document.body.appendChild(modal);
+modal.appendChild(modalContent);
+modalContent.appendChild(modalBody);
+modalBody.appendChild(h2);
+modalBody.appendChild(span);
+modalBody.appendChild(btnD);
+btnD.appendChild(btn);
+modalBody.appendChild(small);
+
+btn.addEventListener("click", () => {
+  btn.disabled = true;
+  modal.classList.remove("show");
   menuMusic.play();
 
-  setTimeout(() => {
-    div.remove();
-  }, 50);
+  setTimeout(() => modal.remove(), 250);
 });
 
-div.appendChild(h1);
-div.appendChild(h4AFF);
-div.appendChild(h4);
-div.appendChild(btn);
-div.appendChild(imgBG);
-document.body.appendChild(div);
-
 setTimeout(() => {
-  div.classList.add("show");
-}, 50);
+  modal.classList.add("show");
+}, 500);
 
 // BG music idle & active
 menuMusic.volume = 0.9;
@@ -71,7 +73,7 @@ document.addEventListener("mousemove", (e) => {
 });
 
 //hover sound
-const soundtrigger = document.querySelectorAll(".blank, .spc, .OK-btn");
+const soundtrigger = document.querySelectorAll(".blank, .spc, .btn");
 const hoverSFX = document.getElementById("hover-sound");
 const clickSFX = document.getElementById("click-sound");
 
