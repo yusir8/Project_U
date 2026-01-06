@@ -19,6 +19,10 @@ body {
   font-family: "NTLG", "rubik";
   font-weight: 400;
   min-height: 100vh;
+  min-width: 100vw;
+  background-image: url(image/WII_U_BG_IMAGE.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #customCursor {
