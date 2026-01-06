@@ -83,7 +83,7 @@ body {
   overflow: clip;
 
   transform: scale(0.95) translateY(10px);
-  transition: all 0.25s ease;
+  transition: all 0.26s ease;
   opacity: 0;
 }
 

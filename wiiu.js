@@ -43,7 +43,7 @@ btn.addEventListener("click", () => {
   modal.classList.remove("show");
   menuMusic.play();
 
-  setTimeout(() => modal.remove(), 250);
+  setTimeout(() => modal.remove(), 251);
 });
 
 setTimeout(() => {

@@ -9,12 +9,8 @@
 Project U is a **Wii U main menu recreation** created by me.
 
 ### **NOTICE**
-<<<<<<< HEAD
 
-This Project isn't completed yet! Still in development. There are a few (or many!) bugs or mistake! and alot things can being weird  
-=======
-This Project isn't completed yet! Still in development. There are a few (or many!) bugs or mistake!    
->>>>>>> 5e4b94a8afee3c89562bfcd7e34dcb3bdc358ba0
+This Project isn't completed yet! Still in development. There are a few (or many!) bugs or mistake!  
 This project **DOES NOT** work on Mobile. **ONLY WORKS ON** 🖥️ Desktop
 
 ---
@@ -27,10 +23,7 @@ This project **DOES NOT** work on Mobile. **ONLY WORKS ON** 🖥️ Desktop
 - Interactivity UI
 
 ### Future Features
-<<<<<<< HEAD
 
-=======
->>>>>>> 5e4b94a8afee3c89562bfcd7e34dcb3bdc358ba0
 - Settings page
 - Scrollbar functionality
 - Updated UI/UX
@@ -41,19 +34,12 @@ This project **DOES NOT** work on Mobile. **ONLY WORKS ON** 🖥️ Desktop
 # Miscellaneous
 
 ## Issues
-<<<<<<< HEAD
 
 - BG music won't play until user input
 - BG video doesn't play
 
 ## Credits
 
-=======
-- BG music won't play until user input
-- BG video doesn't play
-
-## Credits 
->>>>>>> 5e4b94a8afee3c89562bfcd7e34dcb3bdc358ba0
 - Sprites - resekf, RFGuy, epicmartin7, DogToon64
 - BG Music - Nintendo
 - BG Video - Nintendo
@@ -66,12 +52,7 @@ If you’d like to help improve it, feedback and suggestions are always welcome.
 Special thanks to everyone who checks out the project 💙
 
 ## My Social Media
-<<<<<<< HEAD
 
 - Youtube: [itsmeyusir8](https://www.youtube.com/@itsmeyusir8)
 - Discord: yusir8
-=======
-- Youtube: [itsmeyusir8](https://www.youtube.com/@itsmeyusir8)  
-- Discord: yusir8  
->>>>>>> 5e4b94a8afee3c89562bfcd7e34dcb3bdc358ba0
 - Email: yasirprosnoob@gmail.com
