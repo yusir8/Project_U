@@ -17,17 +17,15 @@ This project **LOOK TERRIBLE** on Mobile. **IT IS BEST TO USE ON** 🖥️ Deskt
 
 ### Features (a tracklist)
 
-- Custom cursor
-- BG music
-- Hover and click sound effects
-- Interactivity UI
+- Settings page (WIP)
+- Notification (WIP)
 
 ### Future Features
 
-- Settings page
 - Refresh UI/UX
 - Navigation arrow (left and right)
 - Working Wii menu (may take a while)
+- User page (MAY MAY take a while)
 
 ---
 

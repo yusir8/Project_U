@@ -36,17 +36,45 @@ function closeModal() {
 let setting = document.getElementById("setting");
 
 setting.addEventListener("click", () => {
+  // openModal({
+  //   title: "Settings",
+  //   closable: true,
+  //   body: `
+  //   <div class="settings-tab>
+  //     <button class="tab" data-name="Sound">Sound</button>
+  //     <button class="tab" data-name="Display">Display</button>
+  //     <button class="tab active" data-name="System">System</button>
+  //   </div>
+
+  //   <div class="settings-content">
+  //     <div class="col">
+  //       <label>Volume:</label><br>
+  //       <input type="range" id="volume-slider" min="0" max="100" value="80"><br>
+  //       <small>Adjust the volume</small>
+  //     </div>
+  //   </div>
+  //   `,
+  // });
   openModal({
     title: "Settings",
     closable: true,
     body: `
-    <span>Sorry! Setting isn't implemented yet!</span>
+    <span> Sorry! Settings page isn't finish! <br> (WIP) </span> 
     `,
   });
 });
 
+// const volumeSlider = document.getElementById("volume-slider");
+
+// volumeSlider.addEventListener("input", () => {
+//   menuMusic.volume = this.value;
+// })
+
+// notification
+const notification = document.getElementById("notification");
+
 // popup warning sign
-const NOTICE_VERSION = "2"; // bump this whenever you change notice
+const NOTICE_VERSION = "1"; // bump this whenever you change notice
 
 const userNoticeVersion = localStorage.getItem("noticeVersion");
 
@@ -54,23 +82,29 @@ if (userNoticeVersion !== NOTICE_VERSION) {
   openModal({
     title: "Notice",
     closable: false,
-    body: ` <span>
+    body: ` 
+    <span class="introT">
     Welcome to Project U!
-    <br>
-    <br>
-    Project U still under development
-    <br>
-    You may encounter bugs, missing features, visual issues or mistakes.
-    <br>
-    Other than that enjoy!
-    
     </span>
-        <small>
-      Give feedback and suggestions! <br> It will help make future versions easier to use.
-    </small>
+    <span>
+      Project U still under development.
+    <br>
+      You may encounter bugs, missing features, visual issues or mistakes.
+    <br>
+      Give some feedback or suggestions.
+    <br>
+    </span>
+
+    <span class="final-word">
+      Other than that enjoy!
+    </span>
+
+    <small class="">Once you click OK, you won't see this notice again unless it's updated.</small>
     <div class="btn-d">
       <button class="btn" id="start">OK</button>
-    </div>`,
+    </div>
+
+    `,
   });
 
   setTimeout(() => {
@@ -85,8 +119,8 @@ if (userNoticeVersion !== NOTICE_VERSION) {
 }
 
 // BG music idle & active
-menuMusic.volume = 0.9;
-idleMusic.volume = 0.9;
+menuMusic.volume = 0.8;
+idleMusic.volume = 0.8;
 
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState == "hidden") {
@@ -135,6 +169,10 @@ function updatedDate() {
 
   let Hours = Newdate.getHours();
   let Minute = Newdate.getMinutes();
+  // let ampm = Hours >= 12 ? "PM" : "AM";
+
+  // Hours = Hours % 12;
+  // Hours = Hours ? Hours : "12";
 
   Hours = Hours < 10 ? "0" + Hours : Hours;
   Minute = Minute < 10 ? "0" + Minute : Minute;

@@ -113,7 +113,7 @@ body {
 
 .modal .modal-content .modal-header .close {
   box-shadow: none;
-  background-image: url(image/Cancel.png);
+  background-image: url(image/Undo.png);
   background-size: 50%;
   padding: 0;
   min-width: 0;
@@ -124,8 +124,8 @@ body {
   border-radius: 0;
   background-color: transparent;
   border: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   background-position: center;
   background-size: cover;
   border: none !important;
@@ -194,6 +194,27 @@ body {
   transform: scale(1.07);
 }
 
+span.introT {
+  font-size: 1.5em;
+  letter-spacing: 0;
+}
+
+span.final-word {
+  font-size: 1.2em;
+  color: #000000c8;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+input[type="range"] {
+  width: 10vw;
+  accent-color: #1495ff;
+}
+
 .blank,
 .spc {
   background: none;
@@ -238,6 +259,7 @@ body {
 .top::after {
   content: attr(data-name);
   position: absolute;
+  height: fit-content;
   top: -4.1rem;
   left: 50%;
   transform: translateX(-50%);
@@ -286,6 +308,16 @@ body {
   display: none;
 }
 
+/* .notify {
+  position: absolute;
+  right: -1px;
+  background-color: #09d1eb;
+  height: 1.3rem;
+  width: 1.3rem;
+  border-radius: 50%;
+  z-index: 999;
+} */
+
 .blank img {
   width: 10rem;
   height: 10em;
@@ -306,16 +338,18 @@ body {
   border-radius: 0.5rem;
 }
 
+/* .notify:hover, */
 .blank img:hover,
 .disc-slot:hover .disc,
 .spc img:hover {
   transform: scale(1.1);
 }
 
+/* .notify:active, */
 .blank img:active,
 .disc-slot:active .disc,
-#start img:active {
-  transform: scale(1.2);
+.spc img:active {
+  transform: scale(1.14);
 }
 
 .spc img {
@@ -366,5 +400,5 @@ footer p {
 
 footer .Disclaimer {
   color: red;
-  opacity: 1;
+  opacity: 1 !important;
 }
